@@ -49,6 +49,7 @@
           tileDiv.setAttribute('id','tile['+i+']');
           tileDiv.setAttribute('data-row',this.tiles[i].row);
           tileDiv.setAttribute('data-col',this.tiles[i].col);
+            tileDiv.innerHTML=0;
           rowDiv[row].appendChild(tileDiv);
 
         if(i==6 || i==13 || i==20 || i==27 || i==34 || i==41 || i==48)
@@ -62,43 +63,44 @@
         document.body.appendChild(boardDiv);
      };
 
-        //// function not called --to be removed
-//        this.generateBomb = function(numBombs) {  //push to bomsmshell..for loop to check for combination exists
-//                var i;
-//                var numBombs = 10;
-//                for(i=0; i<numBombs; i++){   
-//                var p = Math.floor(Math.random() * 6);
-//               // var q = Math.floor(Math.random() * 3);
-//                console.log(p);
-//                }
-//        };
             
    this.bombs = [[]];
        // this.bombs[];
         this.generateBomb = function() {
             for(var i=0;i<10;i++){        // for random no generation
                      document.getElementById('tile['+Math.floor(Math.random(i) * 49)+']').innerHTML = 'B';
+              
             }
             
-            console.log(this.bombs)
-		  	while (this.bombs.length < 7)
-			{    
-                var found = false;
-				var r = Math.floor(Math.random() * 7) + 1;
-				var c = Math.floor(Math.random() * 7) + 1;
-				for(i = 0; i <this.bombs.length; i++)
-				{
-				if(r == this.bombs[i][0] && c == this.bombs[i][1]){
-                    found = true;
-                    break;
+            
+              for(var j = 0;j<49;j++) {   
+                    if(document.getElementById('tile['+j+']').innerHTML=="B")
+                        {
+                          //  console.log(j);
+                            //check for j-8,-7,-6,-1,1,6,7,8
+                            var i = 0;
+                            var neighbouringCell = [j-8,j-7,j-6,j-1,j+1,j+6,j+7,j+8];
+                            while(i< neighbouringCell.length){
+                                if(!neighbouringCell[i]<0){  
+                                   var tempCell= document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML;
+                                    if (tempCell == "B");
+                                        break;
+                                    tempCell=parseInt(tempCell);
+                                    tempCell++;
+                                    document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML = tempCell;
+                                
+                                }
+                                i++;
+                            }
+                            
+                        }
+            
                 }
-                if(!found)
-                    this.bombs.push([r,c]);
-				}
-			}
-
-               
+          //  document.getElementById("").innerHTML
+        
         };//end bombs
+        
+        
 };        
     var myBoard = new board();    
     myBoard.init();
