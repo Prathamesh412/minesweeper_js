@@ -81,19 +81,19 @@
                             var i = 0;
                             var neighbouringCell = [j-8,j-7,j-6,j-1,j+1,j+6,j+7,j+8];
                             while(i< neighbouringCell.length){
-                                if(neighbouringCell[i]>0){  
-                                    console.log(neighbouringCell.length);
+                                if(neighbouringCell[i]>=0){  
                                    var tempCell= document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML;
                                     if (tempCell == "B")
                                         break;
                                       tempCell=parseInt(tempCell);
                                       tempCell++;
+                                    
                                     document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML = tempCell;
-                                 //   console.log(tempcell)
                                 }
                                 else{
+                                    
                                     console.log("outside")
-                                }
+                                    console.log(neighbouringCell.length);                                }
                                 i++;
                             }
                             
