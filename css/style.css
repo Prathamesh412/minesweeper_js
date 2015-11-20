@@ -23,10 +23,31 @@
   background-color: grey;
   margin: 5px;
   padding: 10px;
-  color: white;
+  color: grey;
 }
 .row{
   margin: 10px;
   display: block;
   padding: 10px;
+}
+
+.show {
+    display: block !important;
+}
+
+.number {
+    text-align: center;
+    width: 100%;
+    display: none;
+    padding-top: 8px;
+}
+
+.hide{
+    color: red;
+}
+
+.score {
+    display: block;
+    float: left;
+    width: 100%;
 }
