@@ -69,11 +69,10 @@
         this.generateBomb = function() {
             for(var i=0;i<10;i++){        // for random no generation
                      document.getElementById('tile['+Math.floor(Math.random(i) * 49)+']').innerHTML = 'B';
-              
-            }
+              }
             
-            
-              for(var j = 0;j<49;j++) {   
+          //  div.addEventListener('click', function(event){
+            for(var j = 0;j<49;j++) {   
                     if(document.getElementById('tile['+j+']').innerHTML=="B")
                         {
                           //  console.log(j);
@@ -83,23 +82,23 @@
                             while(i< neighbouringCell.length){
                                 if(neighbouringCell[i]>=0){  
                                    var tempCell= document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML;
-                                    if (tempCell == "B")
-                                        break;
+                                    if (tempCell != "B"){
                                       tempCell=parseInt(tempCell);
                                       tempCell++;
-                                    
-                                    document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML = tempCell;
+                                        document.getElementById('tile[' + neighbouringCell[i] + ']').innerHTML = tempCell;
+                                    }
                                 }
                                 else{
                                     
                                     console.log("outside")
-                                    console.log(neighbouringCell.length);                                }
+                                    console.log(neighbouringCell.length);                               
+                                }
                                 i++;
                             }
                             
                         }
-            
-                }
+
+               }
           //  document.getElementById("").innerHTML
         
         };//end bombs
